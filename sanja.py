@@ -12,7 +12,7 @@ Great freedom :-)
 
     sanja_conf_app(  
         app,  
-        # There goes normal parameters like for jijna2.Environment(),  
+        # There go normal parameters like for jijna2.Environment(),  
         # for example:  
         auto_reload=True,  
         loader=jinja2PrefixLoader({  
@@ -20,7 +20,7 @@ Great freedom :-)
 
 By default this Jinja template environment is held in:  
 
-    app.config['JINJA_ENV'],  
+    app.config['JINJA_ENV']  
 
 so equaly well You could do:  
 
@@ -92,22 +92,23 @@ from sanic.response import text as sanic_response_text, \
 
 
 def conf_app(app, jinja_template_env_name="JINJA_ENV", *args, **kwargs):
-    """Create Jinja template environment,  
-    and srotes it in sanic app.config.  
+    """Create Jinja template environment, and srotes it in sanic app.config.  
 
-    app:  
-        sanic app instance.  
 
-    jinja_template_env_name:  
+    Parameters
+    ----------
+    app: sanic app instance  
+    jinja_template_env_name:  str, optional  
         jinja template environment instance will be held under  
         app.config[jinja_template_env_name].  
         This also coresponds to  
         jinja_template_env_name in render() function.  
-
     *args, **kwargs:  
         are just jijna2.Environment() parameters.  
 
-    Returns created Jinja environment template instance."""
+    Returns
+    -------
+    created Jinja environment template instance."""
 
     jinja_template_environment = jinja_Environment(*args, **kwargs)
     app.config[jinja_template_env_name] = jinja_template_environment
@@ -116,20 +117,24 @@ def conf_app(app, jinja_template_env_name="JINJA_ENV", *args, **kwargs):
 
 def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
     """Decorator for Sanic request handler,  
+
+
     that turns it into function returning generated jinja template.  
 
-    template:  
+    Decorated function has to return jinja "context" instance.  
+
+    Parameters:
+    -----------
+    template:  str  
         jinja template name.  
-    render_as:  
+    render_as: str  
         corresponds to sanic.response "kind".  
         Possible valuse are: "text", "html", "json", "raw".  
-    jinja_template_env_name:  
+    jinja_template_env_name:  str, optional
         Where jinja template environment instance is held in  
         app.config.  
         This coresponds to  
-        jinja_template_env_name in conf_app() function.  
-
-    Decorated function has to return jinja "context" instance."""
+        jinja_template_env_name in conf_app() function."""
 
     _jinja_renderers = {
         'text': sanic_response_text,
