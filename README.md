@@ -7,6 +7,12 @@ It is entirelly up to You
 how You will configure your Jinja template environment.  
 Great freedom :-)  
 
+It consist of only two dozens lines of simple code.  
+
+# Installation.  
+
+    pip install sanja  
+
 # First You have to configure Your Sanic app so it holds Jinja template environment instance.  
 
     app = sanic.Sanic("Some app")  
@@ -45,7 +51,7 @@ or:
         ...)  
 
 
-# Then You can just use jinja rendering.  
+# Then You can just use Jinja rendering and sanic Response.  
 
 To do so simply decorate your request handler,  
 for example:  

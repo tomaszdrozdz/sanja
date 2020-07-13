@@ -44,7 +44,7 @@ or:
         ...)  
 
 
-# Then You can just use jinja rendering.  
+# Then You can just use Jinja rendering and Sanic response.  
 
 To do so simply decorate your request handler,  
 for example:  
