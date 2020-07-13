@@ -6,7 +6,7 @@ It is entirelly up to You
 how You will configure your Jinja template environment.  
 Great freedom :-)  
 
-# First You have to configure Your Sanic app so it holds Jinja temlate environment instance.  
+# First You have to configure Your Sanic app so it holds Jinja template environment instance.  
 
     app = sanic.Sanic("Some app")  
 

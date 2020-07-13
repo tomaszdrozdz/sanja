@@ -7,7 +7,7 @@ It is entirelly up to You
 how You will configure your Jinja template environment.  
 Great freedom :-)  
 
-# First You have to configure Your Sanic app so it holds Jinja temlate environment instance.  
+# First You have to configure Your Sanic app so it holds Jinja template environment instance.  
 
     app = sanic.Sanic("Some app")  
 
@@ -56,10 +56,10 @@ for example:
         ...  
         return {'jijna': "context"}  
 
-* some_view function has to return jinja "context" instance.  
+* some\_view function has to return jinja "context" instance.  
 * In first sanja.render() parameter provide jinja template.  
   (In this example it has to be under  
-      some_package/templates/some_template.html.jinja  
+      some\_package/templates/some_template.html.jinja  
   because it is how we configured here jinja template environment,  
   so having any isues please refer to Jinja documentation).  
 * Second sanja.render() parameter coresponds to sanic.response "kind",  
