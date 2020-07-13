@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="sanja",
-    version="1.0.0.3",
+    version="1.0.0.4",
     description="This module aims to make bringing Jinja templates to Sanic easy.",
     long_description_content_type="text/markdown",
     url="https://github.com/tomaszdrozdz/sanja",
