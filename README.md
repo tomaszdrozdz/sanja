@@ -51,7 +51,7 @@ or:
         ...)  
 
 
-# Then You can just use Jinja rendering and sanic Response.  
+# Then You can just use Jinja rendering and Sanic response.  
 
 To do so simply decorate your request handler,  
 for example:  
