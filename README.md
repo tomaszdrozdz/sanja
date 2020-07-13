@@ -13,7 +13,7 @@ Great freedom :-)
 
     sanja_conf_app(  
         app,  
-        # There goes normal parameters like for jijna2.Environment(),  
+        # There go normal parameters like for jijna2.Environment(),  
         # for example:  
         auto_reload=True,  
         loader=jinja2PrefixLoader({  
@@ -21,7 +21,7 @@ Great freedom :-)
 
 By default this Jinja template environment is held in:  
 
-    app.config['JINJA_ENV'],  
+    app.config['JINJA_ENV']  
 
 so equaly well You could do:  
 
