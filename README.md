@@ -1,7 +1,7 @@
 sanja
 =====
 
-This module aims to make bringing Jinja templates to Sanic easy.  
+This module aims to make bringing Jinja templates to Sanic to be easy.  
 
 It is entirelly up to You  
 how You will configure your Jinja template environment.  

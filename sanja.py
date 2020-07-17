@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""This module aims to make bringing Jinja templates to Sanic easy.  
+"""This module aims to make bringing Jinja templates to Sanic to be easy.  
 
 It is entirelly up to You  
 how You will configure your Jinja template environment.  
@@ -89,6 +89,13 @@ from sanic.response import text as sanic_response_text, \
                            html as sanic_response_html, \
                            json as sanic_response_json, \
                            raw  as sanic_response_raw
+
+
+
+__version__ = "1.0.0.5"
+__author__ = "tomaszdrozdz"
+__author_email__ = "tomasz.drozdz.1@protonmail.com"
+
 
 
 def conf_app(app, jinja_template_env_name="JINJA_ENV", *args, **kwargs):
