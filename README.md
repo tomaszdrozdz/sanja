@@ -85,3 +85,23 @@ you can do so:
     async def some_view(request):  
         ...  
         return {'jijna': "context"}  
+
+
+# Yo can also use it for Class-Based Views.  
+
+in decorators class variable:  
+
+    class YourView(sanic.views.HTTPMethodView):  
+        decorators = [sanja.render(...)]  
+    
+        ...  
+
+or per http method:  
+
+    class YourView(sanic.views.HTTPMethodView):  
+    
+        @sanja.render(...)  
+        async def get(self, request):  
+            ...  
+    
+        ...  

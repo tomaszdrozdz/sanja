@@ -77,7 +77,27 @@ you can do so:
     @sanja.render("some_package/some_template.html.jinja", "html", jinja_template_env_name="JINJA_ENV_2")  
     async def some_view(request):  
         ...  
-        return {'jijna': "context"}"""  
+        return {'jijna': "context"}  
+
+# Yo can also use it for Class-Based Views.  
+
+in decorators class variable:  
+
+    class YourView(sanic.views.HTTPMethodView):  
+        decorators = [sanja.render(...)]  
+    
+        ...  
+
+or per http method:  
+
+    class YourView(sanic.views.HTTPMethodView):  
+    
+        @sanja.render(...)  
+        async def get(self, request):  
+            ...  
+    
+        ...  
+"""  
 
 
 
@@ -92,7 +112,7 @@ from sanic.response import text as sanic_response_text, \
 
 
 
-__version__ = "1.0.0.5"
+__version__ = "1.0.1"
 __author__ = "tomaszdrozdz"
 __author_email__ = "tomasz.drozdz.1@protonmail.com"
 
@@ -125,10 +145,9 @@ def conf_app(app, jinja_template_env_name="JINJA_ENV", *args, **kwargs):
 def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
     """Decorator for Sanic request handler,  
 
-
     that turns it into function returning generated jinja template.  
 
-    Decorated function has to return jinja "context" instance.  
+    Decorated function (or method) has to return jinja "context" instance.  
 
     Parameters:
     -----------
@@ -152,11 +171,12 @@ def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
     def _decorator(to_decorate):
 
         @wraps(to_decorate)
-        async def _decorated(request, *args, **kwargs):
+        async def _decorated(*args, **kwargs):
 
+            request = args[-1]
             _jinja_env = request.app.config[jinja_template_env_name]
 
-            template_context = await to_decorate(request, *args, **kwargs)
+            template_context = await to_decorate(*args, **kwargs)
 
             if _jinja_env.enable_async:
                 rendered_template = await _jinja_env.get_template(template).render_async(template_context)
