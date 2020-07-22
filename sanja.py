@@ -81,7 +81,7 @@ you can do so:
 
 # Yo can also use it for Class-Based Views.  
 
-in decorators class variable:  
+In decorators class variable:  
 
     class YourView(sanic.views.HTTPMethodView):  
         decorators = [sanja.render(...)]  
