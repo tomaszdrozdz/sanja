@@ -112,7 +112,7 @@ from sanic.response import text as sanic_response_text, \
 
 
 
-__version__ = "1.0.2"
+__version__ = "1.0.2.1"
 __author__ = "tomaszdrozdz"
 __author_email__ = "tomasz.drozdz.1@protonmail.com"
 
@@ -176,7 +176,7 @@ def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
 
             _jinja_env = request.app.config[jinja_template_env_name]
 
-            template_context = await to_decorate(request):
+            template_context = await to_decorate(request)
 
             if _jinja_env.enable_async:
                 rendered_template = await _jinja_env.get_template(template).render_async(template_context)
