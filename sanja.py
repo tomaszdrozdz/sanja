@@ -110,9 +110,11 @@ from sanic.response import text as sanic_response_text, \
                            json as sanic_response_json, \
                            raw  as sanic_response_raw
 
+from ujson import loads as ujson_loads
 
 
-__version__ = "1.0.2.1"
+
+__version__ = "1.0.3"
 __author__ = "tomaszdrozdz"
 __author_email__ = "tomasz.drozdz.1@protonmail.com"
 
@@ -182,6 +184,9 @@ def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
                 rendered_template = await _jinja_env.get_template(template).render_async(template_context)
             else:
                 rendered_template = _jinja_env.get_template(template).render(template_context)
+
+            if render_as == "json":
+                rendered_template = ujson_loads(rendered_template.replace('"', '\\"').replace("'", '"'))
 
             return _jinja_renderers[render_as](rendered_template)
 
