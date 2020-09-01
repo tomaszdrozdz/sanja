@@ -105,3 +105,16 @@ or per http method:
             ...  
     
         ...  
+
+# NOTE for json format.  
+
+In order to return json format,  
+your template should be either hand crafted proper json, e.g:  
+
+    {  
+        "some": "thing"  
+    }  
+
+or e.g whole template can be just one variable turned into json like:  
+
+    {{some_variable|tojson}}  

@@ -97,7 +97,19 @@ or per http method:
             ...  
     
         ...  
-"""  
+
+# NOTE for json format.  
+
+In order to return json format,  
+your template should be either hand crafted proper json, e.g:  
+
+    {  
+        "some": "thing"  
+    }  
+
+or e.g whole template can be just one variable turned into json like:  
+
+    {{some_variable|tojson}}"""  
 
 
 
@@ -114,7 +126,7 @@ from ujson import loads as ujson_loads
 
 
 
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 __author__ = "tomaszdrozdz"
 __author_email__ = "tomasz.drozdz.1@protonmail.com"
 
@@ -186,7 +198,7 @@ def render(template, render_as, jinja_template_env_name='JINJA_ENV'):
                 rendered_template = _jinja_env.get_template(template).render(template_context)
 
             if render_as == "json":
-                rendered_template = ujson_loads(rendered_template.replace('"', '\\"').replace("'", '"'))
+                rendered_template = ujson_loads(rendered_template)
 
             return _jinja_renderers[render_as](rendered_template)
 
